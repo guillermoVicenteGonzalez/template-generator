@@ -19,3 +19,4 @@
   - [ ] Branch generation?
   - [ ] Mark repositories as templates (for github and for this)
 - [ ] Export to npm
+- [ ] Commits
