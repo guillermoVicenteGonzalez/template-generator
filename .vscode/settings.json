@@ -1,0 +1,48 @@
+{
+  "editor.formatOnSaveMode": "file",
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
+
+  "javascript.validate.enable": false,
+  "javascript.suggestionActions.enabled": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports.ts": "always",
+    "source.removeUnused.ts": "always",
+    "source.organizeImports": "always",
+    "source.removeUnusedImports": "always",
+    "source.sortImports": "always",
+    "source.formatDocument": "always",
+    "source.fixAll.ts": "always",
+    "source.fixAll.eslint": "always"
+  },
+
+  "eslint.validate": [
+    "typescript",
+    "typescriptreact",
+    "javascript",
+    "javascriptreact"
+  ],
+  "files.eol": "\n",
+  "files.exclude": {
+    // "**/.git": true,
+    // "**/.svn": true,
+    // "**/.hg": true,
+    // "**/CVS": true,
+    // "**/.DS_Store": true,
+    // "**/Thumbs.db": true,
+    // "**/next-env.d.ts": true,
+    // "**/tsconfig.tsbuildinfo": true,
+    // "**/package-lock.json": true,
+    // "**/LICENSE": true,
+    // "**/.next": true,
+    // "**/.husky": true,
+    // "**/.commitlintrc*": true,
+    // "**/.prettierrc*": true,
+    // "**/.gitignore": true,
+    // "**/.eslint*": true,
+    // "**/.vscode": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

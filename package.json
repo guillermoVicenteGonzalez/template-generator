@@ -1,0 +1,37 @@
+{
+  "name": "template-generator",
+  "version": "1.0.0",
+  "description": "A simple template builder used to create projects from personal templates on the run",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guillermoVicenteGonzalez/template-generator.git"
+  },
+  "keywords": [
+    "template",
+    "generator",
+    "node",
+    "npm"
+  ],
+  "author": "Guillermo Vicente González",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/guillermoVicenteGonzalez/template-generator/issues"
+  },
+  "homepage": "https://github.com/guillermoVicenteGonzalez/template-generator#readme",
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "tsc": "^2.0.4",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "eslint": "^9.13.0",
+    "globals": "^15.11.0",
+    "typescript-eslint": "^8.12.2"
+  }
+}
