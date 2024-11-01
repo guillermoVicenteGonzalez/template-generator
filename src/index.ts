@@ -1,16 +1,19 @@
+import { cloneTemplate } from "./modules/generation";
 import {
 	getProjectModules,
 	getProjectName,
 	getTemplateSelection,
 } from "./modules/prompts";
+import { templateManager } from "./templates/templateManager";
 
 async function createProject() {
-	const templateName = await getTemplateSelection();
+	const templateKey = await getTemplateSelection();
+	const template = templateManager.templates[templateKey];
 	const projectName = await getProjectName();
-	const modules = await getProjectModules();
+	const modules = await getProjectModules(template.options);
 	// const templateRepo = TEMPLATES.find(t => t.name == templateName);
 	// if (templateRepo == null) return false;
-	// await cloneTemplate(templateRepo.repo, projectName);
+	await cloneTemplate(template.repo, projectName);
 }
 
 createProject();

@@ -28,7 +28,7 @@
 	"dependencies": {
 		"@inquirer/prompts": "^7.0.1",
 		"@types/degit": "^2.8.6",
-		"chalk": "^5.3.0",
+		"chalk": "4.1.2",
 		"degit": "^2.8.4",
 		"module-alias": "^2.2.3",
 		"ts-node": "^10.9.2",

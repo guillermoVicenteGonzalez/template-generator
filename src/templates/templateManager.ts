@@ -17,7 +17,9 @@ class TemplateManager {
 			arr.push({
 				value: key,
 				name: chalk.hex(templates[key].color)(templates[key].name),
-				description: templates[key].description,
+				description: chalk.hex(templates[key].color)(
+					templates[key].description
+				),
 				short: null,
 				disabled: false,
 			});

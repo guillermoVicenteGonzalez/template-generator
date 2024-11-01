@@ -19,10 +19,6 @@ import { RepoDirection } from "../types/types";
 // 	});
 // }
 
-export function test() {
-	return "buenos dias";
-}
-
 export async function cloneTemplate(
 	direction: RepoDirection,
 	projectPath: string = "./test/"

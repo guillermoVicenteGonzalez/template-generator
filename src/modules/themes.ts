@@ -7,6 +7,8 @@
 import { Separator } from "@inquirer/prompts";
 import chalk from "chalk";
 
+const CURSOR_COLOR = "#e6e6fa";
+const MAIN_COLOR = "#ff0000";
 // function transformText(key: string, text: string) {
 // 	switch (true) {
 // 		case /Vue/g.test(key):
@@ -26,10 +28,21 @@ import chalk from "chalk";
 // 	}
 // }
 
-export const DefaultTheme = {
+export const SelectTheme = {
 	style: {
 		answer: (text: string) => `Template =>  ${chalk.bold(text)}`,
-		description: (text: string) => `${new Separator().separator}\n${text}`,
-		highlight: (text: string) => chalk.inverse(text),
+		description: (text: string) =>
+			`${chalk.hex(MAIN_COLOR)(new Separator().separator)}\n${chalk.inverse(
+				text
+			)}`,
+		highlight: (text: string) => chalk.hex(CURSOR_COLOR).bold(text),
 	},
+};
+
+export const InputTheme = {
+	spinner: {
+		interval: 5,
+	},
+	defaultAnswer: (text: string) => chalk.dim(text),
+	answer: (text: string) => chalk.hex(MAIN_COLOR)(text),
 };

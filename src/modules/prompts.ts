@@ -1,6 +1,7 @@
 import { checkbox, input, select } from "@inquirer/prompts";
+import { SelectableOptions } from "guillermo/types/types";
 import { templateManager } from "../templates/templateManager";
-import { DefaultTheme } from "./themes";
+import { InputTheme, SelectTheme } from "./themes";
 
 export async function getTemplateSelection() {
 	const selection = await select({
@@ -8,7 +9,7 @@ export async function getTemplateSelection() {
 		choices: templateManager.choices,
 		default: templateManager.choices[0],
 		loop: true,
-		theme: DefaultTheme,
+		theme: SelectTheme,
 	});
 
 	return selection;
@@ -17,15 +18,19 @@ export async function getTemplateSelection() {
 export async function getProjectName() {
 	const projectName = await input({
 		message: "Choose a name for your project",
+		theme: InputTheme,
+		default: "test",
+		required: true,
 	});
 
 	return projectName;
 }
 
-export async function getProjectModules() {
+export async function getProjectModules(options: SelectableOptions) {
+	if (!options || options.length == 0) return null;
 	const modules = await checkbox({
 		message: "select extra dependencies",
-		choices: ["tsconfig", "eslint", "prettier"],
+		choices: options,
 	});
 
 	return modules;
