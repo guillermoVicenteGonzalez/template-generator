@@ -1,12 +1,12 @@
 import { checkbox, input, select } from "@inquirer/prompts";
-import { TEMPLATES } from "../templates";
+import { templateManager } from "../templates/templateManager";
 import { DefaultTheme } from "./themes";
 
 export async function getTemplateSelection() {
 	const selection = await select({
 		message: "Select the template you want",
-		choices: TEMPLATES.map(t => t.name),
-		default: TEMPLATES[0].name,
+		choices: templateManager.choices,
+		default: templateManager.choices[0],
 		loop: true,
 		theme: DefaultTheme,
 	});

@@ -1,30 +1,35 @@
-import chalk from "chalk";
 /**
  *
  * @param text
  * Transforms text color depending on the option selected
  */
-function transformText(key: string, text: string) {
-	switch (key) {
-		case "Vue":
-			return chalk.green(text);
 
-		case "7-1-SCSS":
-			return chalk.red(text);
+import { Separator } from "@inquirer/prompts";
+import chalk from "chalk";
 
-		case "React + Vite":
-			return chalk.blue(text);
+// function transformText(key: string, text: string) {
+// 	switch (true) {
+// 		case /Vue/g.test(key):
+// 			return chalk.rgb(0, 255, 0).bold(text);
 
-		case "Express":
-			return chalk.yellow(text);
+// 		case /SCSS/g.test(key):
+// 			return chalk.rgb(255, 0, 0)(text);
 
-		default:
-			return chalk.red("no match");
-	}
-}
+// 		case /React/g.test(key):
+// 			return chalk.rgb(0, 0, 255)(text);
+
+// 		case /Express/g.test(key):
+// 			return chalk.hex("#FFFF00")(text);
+
+// 		default:
+// 			return chalk.hex("#FF0000").bold(`no match for:${text}`);
+// 	}
+// }
 
 export const DefaultTheme = {
 	style: {
-		answer: (text: string) => transformText(text, `The answer is ${text}`),
+		answer: (text: string) => `Template =>  ${chalk.bold(text)}`,
+		description: (text: string) => `${new Separator().separator}\n${text}`,
+		highlight: (text: string) => chalk.inverse(text),
 	},
 };

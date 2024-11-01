@@ -1,42 +1,33 @@
-// {
-// 	"compilerOptions": {
-// 		/* Language and Environment */
-// 		"target": "ES2017" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-// 		"module": "commonjs" /* Specify what module code is generated. */,
-
-// 		"esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
-// 		"forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
-
-// 		/* Type Checking */
-// 		"skipLibCheck": true,
-// 		"outDir": "dist",
-// 		"rootDir": "./src" /* Skip type checking all .d.ts files. */,
-
-// 		//linting
-// 		"strict": true /* Enable all strict type-checking options. */,
-// 		"alwaysStrict": true,
-// 		"noImplicitAny": true,
-// 		"strictNullChecks": true,
-// 		"noUnusedLocals": true,
-// 		"noUnusedParameters": true,
-// 		"noFallthroughCasesInSwitch": true,
-
-// 		//path
-// 		"baseUrl": "./src",
-// 		"paths": {
-// 			"@/*": ["./src/*"]
-// 		}
-// 	}
-// }
-
 {
 	"compilerOptions": {
 		"target": "ES2017",
 		"module": "CommonJS",
-		"outDir": "./out",
-		"rootDir": "./src",
-		"baseUrl": "./src",
 		"esModuleInterop": true,
-		"strict": true
-	}
+		"strict": false,
+		"forceConsistentCasingInFileNames": true,
+		"outDir": "./dist",
+		"baseUrl": ".",
+		"paths": {
+			"guillermo/*": ["./src/*"]
+		}
+
+		/* Bundler mode */
+	},
+	"include": ["./src", "**/*.ts", "**/*.d.ts"],
+	"exclude": ["node_modules"]
 }
+
+// {
+// 	"compilerOptions": {
+// 		"target": "ES2017",
+// 		"module": "CommonJS",
+// 		"outDir": "./dist",
+// 		"rootDir": ".",
+// 		"baseUrl": ".",
+// 		"paths": {
+// 			"@/modules/*": ["./src/modules/*"]
+// 		},
+// 		"esModuleInterop": true,
+// 		"strict": true
+// 	}
+// }

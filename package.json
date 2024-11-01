@@ -12,6 +12,7 @@
 		"type": "git",
 		"url": "git+https://github.com/guillermoVicenteGonzalez/template-generator.git"
 	},
+	"type": "commonjs",
 	"keywords": [
 		"template",
 		"generator",
@@ -27,7 +28,9 @@
 	"dependencies": {
 		"@inquirer/prompts": "^7.0.1",
 		"@types/degit": "^2.8.6",
+		"chalk": "^5.3.0",
 		"degit": "^2.8.4",
+		"module-alias": "^2.2.3",
 		"ts-node": "^10.9.2",
 		"tsc": "^2.0.4",
 		"typescript": "^5.6.3"
