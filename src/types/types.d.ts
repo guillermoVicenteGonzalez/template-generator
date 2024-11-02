@@ -53,7 +53,7 @@ type templateColor = `#${string}`;
 //FINAL MODEL FOR PROJECT GENERATION.
 export interface Project {
 	name: string;
-	template: string;
+	templateRepo: RepoDirection;
 	options?: templateOptions;
 	author: string;
 }

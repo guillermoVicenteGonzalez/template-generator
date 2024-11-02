@@ -29,7 +29,7 @@ function generateProjectOptions(
 async function main() {
 	const projectModel: Project = {
 		name: "test",
-		template: "none",
+		templateRepo: "none",
 		author: "john doe",
 	};
 
@@ -43,7 +43,7 @@ async function main() {
 	projectModel.options = generateProjectOptions(modules);
 
 	projectModel.name = projectName;
-	projectModel.template = templateKey;
+	projectModel.templateRepo = template.repo;
 
 	const confirmation = await confirmSelection(projectModel);
 	// const result = await cloneTemplate(template.repo, projectName);

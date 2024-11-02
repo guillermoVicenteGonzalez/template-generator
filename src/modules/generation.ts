@@ -6,6 +6,7 @@ import { Project, RepoDirection, templateOptions } from "../types/types";
 export async function createProject(project: Project) {
 	//genero los ficheros y creo el directorio
 	customizeProjectOptions(project.name, project.options);
+	cloneTemplate(project.templateRepo, project.name);
 	return true;
 }
 

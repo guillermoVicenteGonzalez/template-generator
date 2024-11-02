@@ -13,6 +13,7 @@ const templates: templateCollection = {
 		name: "React + Vite SWC",
 		repo: "Repositorio",
 		color: "#61dbfb",
+		options: ["eslint", "prettier", "vsconfig"],
 		description:
 			"A react + vite + swc project template including typescript scss and others",
 	},
@@ -20,6 +21,7 @@ const templates: templateCollection = {
 		name: "7-1 + SCSS",
 		repo: "https://github.com/guillermoVicenteGonzalez/7-1-template.git",
 		color: "#cd6799",
+		options: ["vsconfig"],
 		description:
 			"A simple project tempalte based on the 7-1 architecture and SCSS features",
 	},
@@ -27,6 +29,7 @@ const templates: templateCollection = {
 		name: "Express js",
 		repo: "repositorio",
 		color: "#f0db4f",
+		options: ["eslint", "prettier", "vsconfig"],
 		description:
 			"A simple project template for express js using typescript, eslint and prettier",
 	},
