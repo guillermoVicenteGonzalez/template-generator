@@ -35,6 +35,9 @@ export interface templateOptions {
 	eslint?: boolean;
 	prettier?: boolean;
 	vsconfig?: boolean;
+	license?: boolean;
+	gitignore?: boolean;
+	docker?: boolean;
 }
 
 export type templateOption = keyof templateOptions;

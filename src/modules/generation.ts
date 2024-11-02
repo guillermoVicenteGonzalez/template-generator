@@ -5,6 +5,7 @@ import { Project, RepoDirection, templateOptions } from "../types/types";
 
 export async function createProject(project: Project) {
 	//genero los ficheros y creo el directorio
+	await createProjectDir(project.name);
 	customizeProjectOptions(project.name, project.options);
 	cloneTemplate(project.templateRepo, project.name);
 	return true;
@@ -30,10 +31,6 @@ export async function cloneTemplate(
 		force: true,
 		verbose: false,
 	});
-
-	// emitter.on("info", info => {
-	// 	console.log(info.message);
-	// });
 
 	emitter.clone(projectPath).then(() => {
 		console.log("done");
@@ -61,6 +58,12 @@ function getFilesToDelete(options: templateOptions) {
 
 	if (!options || !options.prettier) files.push(".prettierrc.json");
 
+	if (!options || !options.license) files.push("LICENSE");
+
+	if (!options || !options.gitignore) files.push(".gitignore");
+
+	if (!options || !options.gitignore) files.push("docker");
+
 	return files;
 }
 
@@ -68,7 +71,6 @@ function customizeProjectOptions(dir: string, options: templateOptions = null) {
 	const files = getFilesToDelete(options).map(file => `"${file}"`);
 	if (!files || files.length <= 0) return;
 
-	fs.mkdirSync(dir);
 	fs.writeFileSync(
 		`${dir}/degit.json`,
 		`[
@@ -78,4 +80,28 @@ function customizeProjectOptions(dir: string, options: templateOptions = null) {
 	}	
 	]`
 	);
+}
+
+async function createProjectDir(path: string) {
+	if (fs.existsSync(path)) {
+		console.log("directory exists. Deleting");
+		//check if it is empty
+		await deleteDir(path);
+	}
+	fs.mkdirSync(path);
+}
+
+async function deleteDir(path: string): Promise<boolean> {
+	const promise: Promise<boolean> = new Promise((resolve, reject) => {
+		fs.rm(path, { recursive: true, force: true }, err => {
+			if (err) {
+				reject(err);
+				throw err;
+			}
+
+			resolve(true);
+		});
+	});
+
+	return promise;
 }

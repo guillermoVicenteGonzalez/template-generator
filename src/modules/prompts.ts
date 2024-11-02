@@ -1,4 +1,5 @@
 import { checkbox, confirm, input, select, Separator } from "@inquirer/prompts";
+import * as fs from "fs";
 import { Project, templateOption } from "guillermo/types/types";
 import { templateManager } from "../templates/templateManager";
 import { InputTheme, SelectTheme } from "./themes";
@@ -54,4 +55,19 @@ ${
 	});
 
 	return answer;
+}
+
+export async function confirmDeletePreviousContent(path: string) {
+	if (fs.existsSync(path)) {
+		if (fs.readdirSync(path).length > 0) {
+			const answer = await confirm({
+				message:
+					"A directory with the same name as your project alredy exists. Proceeding would mean its deletion.\nContinue?: ",
+			});
+
+			return answer;
+		}
+	}
+
+	return true;
 }

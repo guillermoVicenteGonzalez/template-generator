@@ -11,14 +11,15 @@ A simple project generator that uses public github templates as boilerplate for 
   - [ ] package-json options
 - [ ] Validations
   - [ ] Repo name
-  - [ ] Valid path
+  - [x] Valid path
   - [x] Valid repo format
 - [ ] Project generation
-  - [ ] Conditional generation (options, config files etc)
-    - [ ] Degit.json (remove license etc)
+  - [x] Conditional generation (options, config files etc)
+    - [x] Degit.json (remove license etc)
     - [ ] Subdirectories
     - [ ] package.json creation (maintain modules add metadata)
   - [ ] Branch generation?
   - [ ] Mark repositories as templates (for github and for this)
 - [ ] Export to npm
-- [ ] Commits
+- [ ] Error handling
+- [ ] Investigate about licenses
