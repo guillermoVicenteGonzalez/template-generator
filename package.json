@@ -2,17 +2,17 @@
 	"name": "template-generator",
 	"version": "1.0.0",
 	"description": "A simple template builder used to create projects from personal templates on the run",
-	"main": "index.js",
+	"main": "bin.js",
+	"bin": "bin.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "ts-node ./src/index.ts",
+		"dev": "ts-node ./src/bin.ts",
 		"build": "tsc"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/guillermoVicenteGonzalez/template-generator.git"
 	},
-	"type": "commonjs",
 	"keywords": [
 		"template",
 		"generator",

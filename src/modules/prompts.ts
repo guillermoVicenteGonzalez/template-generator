@@ -1,7 +1,7 @@
 import { checkbox, confirm, input, select, Separator } from "@inquirer/prompts";
 import * as fs from "fs";
-import { Project, templateOption } from "guillermo/types/types";
 import { templateManager } from "../templates/templateManager";
+import { Project, templateOption } from "../types/types";
 import { InputTheme, SelectTheme } from "./themes";
 
 export async function getTemplateSelection() {

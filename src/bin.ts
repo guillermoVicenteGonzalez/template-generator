@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { createProject } from "./modules/generation";
 import {
 	confirmDeletePreviousContent,

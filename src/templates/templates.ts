@@ -19,7 +19,7 @@ const templates: templateCollection = {
 	},
 	"React+Vite": {
 		name: "React + Vite SWC",
-		repo: "Repositorio",
+		repo: "https://github.com/guillermoVicenteGonzalez/react-template.git",
 		color: "#61dbfb",
 		options: [
 			"eslint",

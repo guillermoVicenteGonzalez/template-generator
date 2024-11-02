@@ -1,14 +1,15 @@
 {
 	"compilerOptions": {
 		"target": "ES2017",
-		"module": "CommonJS",
+		"module": "NodeNext",
 		"esModuleInterop": true,
 		"strict": false,
 		"forceConsistentCasingInFileNames": true,
-		"outDir": "./dist",
+		"outDir": "./bin",
+		"rootDir": "./src",
 		"baseUrl": ".",
 		"paths": {
-			"guillermo/*": ["./src/*"]
+			"@/*": ["./src/*"]
 		}
 
 		/* Bundler mode */
