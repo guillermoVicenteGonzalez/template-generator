@@ -1,0 +1,6 @@
+[
+	{
+	"action":"remove",
+	"files":["eslint.config.mjs","eslint.config.js","eslint.config.json","eslintrc.js",".vscode",".prettierrc.json"]	
+	}	
+	]

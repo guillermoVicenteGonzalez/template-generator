@@ -1,5 +1,5 @@
-import { checkbox, confirm, input, select } from "@inquirer/prompts";
-import { Project, SelectableOptions } from "guillermo/types/types";
+import { checkbox, confirm, input, select, Separator } from "@inquirer/prompts";
+import { Project, templateOption } from "guillermo/types/types";
 import { templateManager } from "../templates/templateManager";
 import { InputTheme, SelectTheme } from "./themes";
 
@@ -26,9 +26,9 @@ export async function getProjectName() {
 	return projectName;
 }
 
-export async function getProjectModules(options: SelectableOptions) {
+export async function getProjectModules(options: templateOption[]) {
 	if (!options || options.length == 0) return null;
-	const modules: string[] = await checkbox({
+	const modules: templateOption[] = await checkbox({
 		message: "select extra dependencies",
 		choices: options,
 	});
@@ -38,14 +38,15 @@ export async function getProjectModules(options: SelectableOptions) {
 
 export async function confirmSelection(selections: Project) {
 	const message = `Is the following configuration correct: 
-	Template: ${selections.name}
-	Project name ${selections.name}
-	Author: ${selections.author}
-	${
-		selections.options != null
-			? `additional configurations: ${selections.options}`
-			: ""
-	}`;
+${new Separator().separator}
+Template: ${selections.name}
+Project name ${selections.name}
+Author: ${selections.author}
+${
+	selections.options != null
+		? `additional configurations: ${selections.options}`
+		: ""
+}\n`;
 
 	const answer = await confirm({
 		default: true,

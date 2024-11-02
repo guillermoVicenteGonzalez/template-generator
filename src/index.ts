@@ -1,4 +1,4 @@
-import { cloneTemplate } from "./modules/generation";
+import { createProject } from "./modules/generation";
 import {
 	confirmSelection,
 	getProjectModules,
@@ -6,9 +6,27 @@ import {
 	getTemplateSelection,
 } from "./modules/prompts";
 import { templateManager } from "./templates/templateManager";
-import { type Project } from "./types/types";
+import { templateOption, templateOptions, type Project } from "./types/types";
 
-async function createProject() {
+function generateProjectOptions(
+	modulesList: templateOption[]
+): templateOptions {
+	const projectOptions: templateOptions = {
+		eslint: false,
+		prettier: false,
+		typescript: false,
+		vsconfig: false,
+	};
+
+	if (!modulesList || modulesList.length <= 0) return null;
+	modulesList.forEach(item => {
+		projectOptions[item] = true;
+	});
+
+	return projectOptions;
+}
+
+async function main() {
 	const projectModel: Project = {
 		name: "test",
 		template: "none",
@@ -22,12 +40,14 @@ async function createProject() {
 	// const templateRepo = TEMPLATES.find(t => t.name == templateName);
 	// if (templateRepo == null) return false;
 
+	projectModel.options = generateProjectOptions(modules);
+
 	projectModel.name = projectName;
-	if (modules) projectModel.options = modules;
 	projectModel.template = templateKey;
 
 	const confirmation = await confirmSelection(projectModel);
-	const result = await cloneTemplate(template.repo, projectName);
+	// const result = await cloneTemplate(template.repo, projectName);
+	const result = await createProject(projectModel);
 	if (result) {
 		console.log("project created succesfully");
 	} else {
@@ -35,4 +55,4 @@ async function createProject() {
 	}
 }
 
-createProject();
+main();

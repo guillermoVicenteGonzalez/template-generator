@@ -1,16 +1,18 @@
 # template-generator
 
+A simple project generator that uses public github templates as boilerplate for javascript projects.
+
 ## Todo
 
 - [x] Colors
 - [ ] Project name color
 - [ ] More questions
-  - [ ] Project name
+  - [x] Project name
   - [ ] package-json options
 - [ ] Validations
   - [ ] Repo name
   - [ ] Valid path
-  - [ ] Valid repo format
+  - [x] Valid repo format
 - [ ] Project generation
   - [ ] Conditional generation (options, config files etc)
     - [ ] Degit.json (remove license etc)

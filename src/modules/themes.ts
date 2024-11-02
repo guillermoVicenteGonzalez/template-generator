@@ -30,11 +30,10 @@ const MAIN_COLOR = "#ff0000";
 
 export const SelectTheme = {
 	style: {
-		answer: (text: string) => `Template =>  ${chalk.bold(text)}`,
+		answer: (text: string) =>
+			chalk.hex(MAIN_COLOR)(`Template =>  ${chalk.bold(text)}`),
 		description: (text: string) =>
-			`${chalk.hex(MAIN_COLOR)(new Separator().separator)}\n${chalk.inverse(
-				text
-			)}`,
+			`${new Separator().separator}\n${chalk.inverse(text)}`,
 		highlight: (text: string) => chalk.hex(CURSOR_COLOR).bold(text),
 	},
 };

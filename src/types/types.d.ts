@@ -12,7 +12,7 @@ export interface ProjectTemplate {
 	name: string;
 	repo: string;
 	color?: templateColor;
-	options?: SelectableOptions;
+	options?: templateOption[];
 	description: string;
 }
 
@@ -37,9 +37,11 @@ export interface templateOptions {
 	vsconfig?: boolean;
 }
 
+export type templateOption = keyof templateOptions;
+
 //an array that can only contain members ot the template options interface
 //used to be passed to a select input
-export type SelectableOptions = Array<keyof templateOptions>;
+// export type SelectableOptions = Array<templateOption>;
 
 /**
  * TYPE ALIASES
@@ -52,6 +54,6 @@ type templateColor = `#${string}`;
 export interface Project {
 	name: string;
 	template: string;
-	options?: templateOptions | Array<string>;
+	options?: templateOptions;
 	author: string;
 }
