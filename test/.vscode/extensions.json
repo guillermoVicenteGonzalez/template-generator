@@ -1,0 +1,7 @@
+{
+	"recommendations": [
+		"esbenp.prettier-vscode",
+		"formulahendry.auto-rename-tag",
+		"formulahendry.auto-close-tab"
+	]
+}

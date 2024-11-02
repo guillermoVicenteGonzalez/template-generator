@@ -1,0 +1,13 @@
+@use "abstracts/variables";
+@use "abstracts/functions";
+@use "abstracts/mixins";
+
+@use "base/base";
+@use "base/utilities";
+@use "base/animations";
+@use "base/typography";
+
+// DELETE THIS
+@use "layouts/template-banner";
+@use "layouts/template-content";
+@use "layouts/template-footer";

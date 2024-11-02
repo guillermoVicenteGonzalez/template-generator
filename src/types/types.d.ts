@@ -41,6 +41,17 @@ export interface templateOptions {
 //used to be passed to a select input
 export type SelectableOptions = Array<keyof templateOptions>;
 
+/**
+ * TYPE ALIASES
+ */
 type RepoDirection = string;
 type templateKey = string;
 type templateColor = `#${string}`;
+
+//FINAL MODEL FOR PROJECT GENERATION.
+export interface Project {
+	name: string;
+	template: string;
+	options?: templateOptions | Array<string>;
+	author: string;
+}

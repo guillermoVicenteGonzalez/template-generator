@@ -19,10 +19,21 @@ import { RepoDirection } from "../types/types";
 // 	});
 // }
 
+function validateRepoName(name: string) {
+	const exp = new RegExp(
+		"((git|ssh|http(s)?)|(git@[w.]+))(:(//)?)([w.@:/-~]+)(.git)(/)?"
+	);
+	return exp.test(name);
+}
+
 export async function cloneTemplate(
 	direction: RepoDirection,
 	projectPath: string = "./test/"
 ) {
+	if (!validateRepoName(direction)) {
+		return false;
+	}
+
 	const emitter = degit(direction, {
 		cache: true,
 		force: true,
@@ -36,4 +47,6 @@ export async function cloneTemplate(
 	emitter.clone(projectPath).then(() => {
 		console.log("done");
 	});
+
+	return true;
 }

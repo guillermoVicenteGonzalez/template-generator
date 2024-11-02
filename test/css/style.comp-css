@@ -1,0 +1,61 @@
+/*
+OTIONS
+ - phone: 600px;
+ - tab-port: 900px;
+ - tab-land: 1200px;
+ - big-desktop: 1800px;
+*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+@media only screen and (max-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
+}
+
+body {
+  font-family: sans-serif, sans-serif;
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+.template-banner {
+  position: fixed;
+  top: 0;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.template-banner__title {
+  color: #fff;
+  margin: 2rem 0;
+  text-align: center;
+  font-size: 4rem;
+}
+
+/*# sourceMappingURL=style.comp-css.map */
