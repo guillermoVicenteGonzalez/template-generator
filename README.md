@@ -20,6 +20,8 @@ A simple project generator that uses public github templates as boilerplate for 
     - [ ] package.json creation (maintain modules add metadata)
   - [ ] Branch generation?
   - [ ] Mark repositories as templates (for github and for this)
-- [ ] Export to npm
+- [x] Export to npm
 - [ ] Error handling
 - [ ] Investigate about licenses
+
+## Run

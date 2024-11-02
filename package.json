@@ -1,13 +1,20 @@
 {
-	"name": "template-generator",
+	"name": "@gvicenteg/project-generator",
 	"version": "1.0.0",
 	"description": "A simple template builder used to create projects from personal templates on the run",
-	"main": "bin.js",
-	"bin": "bin.js",
+	"main": "./dist/bin.js",
+	"bin": {
+		"@gvicenteg/project-generator": "dist/bin.js"
+	},
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "ts-node ./src/bin.ts",
-		"build": "tsc"
+		"build": "tsc --build",
+		"bundle": "tsup ",
+		"publish": "npm run bundle && npm publish --access public"
 	},
 	"repository": {
 		"type": "git",
@@ -27,20 +34,19 @@
 	"homepage": "https://github.com/guillermoVicenteGonzalez/template-generator#readme",
 	"dependencies": {
 		"@inquirer/prompts": "^7.0.1",
-		"@types/degit": "^2.8.6",
 		"chalk": "4.1.2",
-		"degit": "^2.8.4",
-		"module-alias": "^2.2.3",
-		"ts-node": "^10.9.2",
-		"tsc": "^2.0.4",
-		"typescript": "^5.6.3"
+		"degit": "^2.8.4"
 	},
 	"devDependencies": {
+		"@types/degit": "^2.8.6",
 		"@eslint/js": "^9.13.0",
 		"@types/inquirer": "^9.0.7",
 		"@types/node": "^22.8.6",
 		"eslint": "^9.13.0",
-		"globals": "^15.11.0",
-		"typescript-eslint": "^8.12.2"
+		"tsup": "^8.3.5",
+		"typescript-eslint": "^8.12.2",
+		"ts-node": "^10.9.2",
+		"tsc": "^2.0.4",
+		"typescript": "^5.6.3"
 	}
 }
