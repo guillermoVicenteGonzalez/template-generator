@@ -19,7 +19,7 @@ const templates: templateCollection = {
 	},
 	"React+Vite": {
 		name: "React + Vite SWC",
-		repo: "https://github.com/guillermoVicenteGonzalez/react-template.git",
+		repo: "guillermoVicenteGonzalez/react-template#main",
 		color: "#61dbfb",
 		options: [
 			"eslint",
@@ -35,7 +35,7 @@ const templates: templateCollection = {
 	},
 	scss: {
 		name: "7-1 + SCSS",
-		repo: "https://github.com/guillermoVicenteGonzalez/7-1-template.git",
+		repo: "https://github.com/guillermoVicenteGonzalez/7-1-template.git#main",
 		color: "#cd6799",
 		options: ["vsconfig", "license", "prettier"],
 		description:
@@ -43,7 +43,7 @@ const templates: templateCollection = {
 	},
 	express: {
 		name: "Express js",
-		repo: "repositorio",
+		repo: "guillermoVicenteGonzalez/7-1-template#main",
 		color: "#f0db4f",
 		options: [
 			"eslint",

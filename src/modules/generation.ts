@@ -7,7 +7,10 @@ export async function createProject(project: Project) {
 	//genero los ficheros y creo el directorio
 	await createProjectDir(project.name);
 	customizeProjectOptions(project.name, project.options);
-	cloneTemplate(project.templateRepo, project.name);
+	let res = await cloneTemplate(project.templateRepo, project.name);
+	if (!res) {
+		console.log("An error ocurred while trying to build the project template");
+	}
 	return true;
 }
 
@@ -22,26 +25,25 @@ export async function cloneTemplate(
 	direction: RepoDirection,
 	projectPath: string = "test"
 ) {
-	if (!validateRepoName(direction)) {
-		return false;
-	}
-
-	const emitter = degit(direction, {
-		cache: true,
+	// if (!validateRepoName(direction)) {
+	// 	return false;
+	// }
+	const downloader = degit(direction, {
 		force: true,
-		verbose: false,
 	});
 
-	emitter.clone(projectPath).then(() => {
-		console.log("done");
-	});
+	let res = await downloader
+		.clone(projectPath)
+		.catch(err => {
+			console.log("an error ocurred trying to clone the template repository");
+			console.log(err);
+			return undefined;
+		})
+		.then(() => {
+			return true;
+		});
 
-	await emitter.clone(projectPath).catch(err => {
-		console.log(err);
-		return false;
-	});
-
-	return true;
+	return res;
 }
 
 function getFilesToDelete(options: templateOptions) {
@@ -84,7 +86,6 @@ function customizeProjectOptions(dir: string, options: templateOptions = null) {
 
 async function createProjectDir(path: string) {
 	if (fs.existsSync(path)) {
-		console.log("directory exists. Deleting");
 		//check if it is empty
 		await deleteDir(path);
 	}
