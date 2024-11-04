@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import {
+	createNewPackageJson,
 	createProject,
-	eliminateDependencies,
 	generateProjectOptions,
 } from "./modules/generation";
 import {
@@ -48,7 +48,12 @@ async function main() {
 	}
 
 	//dependency deletion
-	eliminateDependencies(projectModel.options, projectModel.name);
+	// eliminateDependencies(projectModel.options, projectModel.name);
+	createNewPackageJson(
+		projectModel.options,
+		projectModel.name,
+		projectModel.author
+	);
 	return;
 }
 

@@ -129,12 +129,37 @@ async function deleteDir(path: string): Promise<boolean> {
 }
 
 //eliminates non used dependencies in package.json
-export async function eliminateDependencies(
+export function createNewPackageJson(
 	options: templateOptions,
-	path: string
+	path: string,
+	author: string
 ) {
 	try {
+		let rawFile = fs.readFileSync(`${path}/package.json`);
+		let pkg = JSON.parse(rawFile.toString());
+
+		//first normal deps
+		if (pkg.dependencies)
+			pkg.dependencies = eliminateDependencies(pkg.dependencies, /react/);
+
+		//then dev deps
+		if (pkg.devDependencies)
+			pkg.devDependencies = eliminateDependencies(pkg.devDependencies, /react/);
+
+		//now we overwrite package.json
+		fs.writeFileSync(`${path}/package.json`, JSON.stringify(pkg));
 	} catch (err) {
 		console.log(err);
 	}
+}
+
+function eliminateDependencies(dependencies: {}, regex: RegExp) {
+	let newDeps = {};
+	for (const dep in dependencies) {
+		if (regex.test(dep) == false) {
+			newDeps[dep] = dependencies[dep];
+		}
+	}
+
+	return newDeps;
 }
