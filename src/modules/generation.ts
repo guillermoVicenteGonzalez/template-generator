@@ -146,8 +146,12 @@ export function createNewPackageJson(
 		if (pkg.devDependencies)
 			pkg.devDependencies = eliminateDependencies(pkg.devDependencies, /react/);
 
+		//now we update the author and name
+		pkg.author = author;
+		pkg.name = path;
+
 		//now we overwrite package.json
-		fs.writeFileSync(`${path}/package.json`, JSON.stringify(pkg));
+		fs.writeFileSync(`${path}/package.json`, JSON.stringify(pkg, null, "\t"));
 	} catch (err) {
 		console.log(err);
 	}
