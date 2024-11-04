@@ -28,11 +28,22 @@ function validateRepoName(name: string) {
 }
 
 export function generateProjectOptions(
-	modulesList: templateOption[]
+	modulesList: templateOption[],
+	originalModules: templateOption[]
 ): templateOptions {
+	if (
+		!modulesList ||
+		!originalModules ||
+		modulesList.length <= 0 ||
+		originalModules.length <= 0
+	)
+		return null;
 	const projectOptions: templateOptions = {};
 
-	if (!modulesList || modulesList.length <= 0) return null;
+	originalModules.forEach(item => {
+		projectOptions[item] = false;
+	});
+
 	modulesList.forEach(item => {
 		projectOptions[item] = true;
 	});
@@ -132,8 +143,8 @@ async function deleteDir(path: string): Promise<boolean> {
 //this is inverse. We do not pass options but UNSELETED OPTIONS
 export function createNewPackageJson(
 	options: templateOptions,
-	path: string,
-	author: string
+	path: string = "test",
+	author: string = "john doe"
 ) {
 	if (options == null) return false;
 
@@ -141,14 +152,14 @@ export function createNewPackageJson(
 		key => options[key] == false
 	);
 
-	console.log(modulesToDelete);
-
 	try {
 		let rawFile = fs.readFileSync(`${path}/package.json`);
 		let pkg = JSON.parse(rawFile.toString());
 
 		//regex creation
-		let depRegex = new RegExp(`(${Object.keys(options)})`.replace(/,/gi, "|"));
+		let depRegex = new RegExp(
+			`(${modulesToDelete.toString()})`.replace(/,/gi, "|")
+		);
 
 		//first normal deps
 		if (pkg.dependencies)
@@ -162,7 +173,19 @@ export function createNewPackageJson(
 			);
 
 		//then scripts
-		if (pkg.scripts) pkg.scripts = eliminateDependencies(pkg.scripts, depRegex);
+		// if (pkg.scripts) pkg.scripts = eliminateDependencies(pkg.scripts, depRegex);
+		if (pkg.scripts) {
+			let nScripts = {};
+			for (const script in pkg.scripts) {
+				if (depRegex.test(pkg.scripts[script]) == false) {
+					nScripts[script] = pkg.scripts[script];
+				} else {
+					console.log(script);
+				}
+			}
+
+			pkg.scripts = nScripts;
+		}
 
 		//now we update the author and name
 		pkg.author = author;

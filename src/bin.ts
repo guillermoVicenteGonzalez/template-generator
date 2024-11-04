@@ -28,7 +28,7 @@ async function main() {
 	const modules = await getProjectModules(template.options);
 
 	//project object generation
-	projectModel.options = generateProjectOptions(modules);
+	projectModel.options = generateProjectOptions(modules, template.options);
 	projectModel.name = projectName;
 	projectModel.templateRepo = template.repo;
 
