@@ -1,5 +1,9 @@
 #!/usr/bin/env node
-import { createProject } from "./modules/generation";
+import {
+	createProject,
+	eliminateDependencies,
+	generateProjectOptions,
+} from "./modules/generation";
 import {
 	confirmDeletePreviousContent,
 	confirmSelection,
@@ -8,25 +12,7 @@ import {
 	getTemplateSelection,
 } from "./modules/prompts";
 import { templateManager } from "./templates/templateManager";
-import { templateOption, templateOptions, type Project } from "./types/types";
-
-function generateProjectOptions(
-	modulesList: templateOption[]
-): templateOptions {
-	const projectOptions: templateOptions = {
-		eslint: false,
-		prettier: false,
-		typescript: false,
-		vsconfig: false,
-	};
-
-	if (!modulesList || modulesList.length <= 0) return null;
-	modulesList.forEach(item => {
-		projectOptions[item] = true;
-	});
-
-	return projectOptions;
-}
+import { type Project } from "./types/types";
 
 async function main() {
 	const projectModel: Project = {
@@ -60,6 +46,10 @@ async function main() {
 	} else {
 		console.log("An error ocurred trying to fetch the project template");
 	}
+
+	//dependency deletion
+	eliminateDependencies(projectModel.options, projectModel.name);
+	return;
 }
 
 main();

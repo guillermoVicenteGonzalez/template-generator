@@ -38,6 +38,13 @@ export async function getProjectModules(options: templateOption[]) {
 }
 
 export async function confirmSelection(selections: Project) {
+	let selectedModules: templateOption[] = [];
+	for (const key in selections.options) {
+		if (selections.options[key] == true) {
+			selectedModules.push(key as templateOption);
+		}
+	}
+
 	const message = `Is the following configuration correct: 
 ${new Separator().separator}
 Template: ${selections.name}
@@ -45,7 +52,7 @@ Project name ${selections.name}
 Author: ${selections.author}
 ${
 	selections.options != null
-		? `additional configurations: ${selections.options}`
+		? `additional configurations: ${selectedModules}`
 		: ""
 }\n`;
 

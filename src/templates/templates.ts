@@ -29,6 +29,7 @@ const templates: templateCollection = {
 			"gitignore",
 			"typescript",
 			"docker",
+			"storybook",
 		],
 		description:
 			"A react + vite + swc project template including typescript scss and others",

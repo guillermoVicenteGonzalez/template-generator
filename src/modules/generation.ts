@@ -1,7 +1,13 @@
 // import { RepoDirection } from "types";
+import console from "console";
 import degit from "degit";
 import * as fs from "fs";
-import { Project, RepoDirection, templateOptions } from "../types/types";
+import {
+	Project,
+	RepoDirection,
+	templateOption,
+	templateOptions,
+} from "../types/types";
 
 export async function createProject(project: Project) {
 	//genero los ficheros y creo el directorio
@@ -19,6 +25,19 @@ function validateRepoName(name: string) {
 		"((git|ssh|http(s)?)|(git@[w.]+))(:(//)?)([w.@:/-~]+)(.git)(/)?"
 	);
 	return exp.test(name);
+}
+
+export function generateProjectOptions(
+	modulesList: templateOption[]
+): templateOptions {
+	const projectOptions: templateOptions = {};
+
+	if (!modulesList || modulesList.length <= 0) return null;
+	modulesList.forEach(item => {
+		projectOptions[item] = true;
+	});
+
+	return projectOptions;
 }
 
 export async function cloneTemplate(
@@ -66,6 +85,8 @@ function getFilesToDelete(options: templateOptions) {
 
 	if (!options || !options.gitignore) files.push("docker");
 
+	if (!options || !options.blueprints) files.push(".blueprints");
+
 	return files;
 }
 
@@ -105,4 +126,15 @@ async function deleteDir(path: string): Promise<boolean> {
 	});
 
 	return promise;
+}
+
+//eliminates non used dependencies in package.json
+export async function eliminateDependencies(
+	options: templateOptions,
+	path: string
+) {
+	try {
+	} catch (err) {
+		console.log(err);
+	}
 }

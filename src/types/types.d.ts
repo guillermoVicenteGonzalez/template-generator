@@ -27,17 +27,20 @@ export interface templateChoice extends Choice<string> {
 	value: string;
 	description: string;
 	options?: templateOptions;
+	variants?: { name: string; branch: string };
 }
 
 //The options that can be enabled to the RESULTING template.
 export interface templateOptions {
-	typescript?: boolean;
 	eslint?: boolean;
 	prettier?: boolean;
 	vsconfig?: boolean;
 	license?: boolean;
 	gitignore?: boolean;
 	docker?: boolean;
+	blueprints?: boolean;
+	storybook?: boolean;
+	typescript?: boolean; //branch where ts is used ?
 }
 
 export type templateOption = keyof templateOptions;
