@@ -61,5 +61,6 @@ export interface Project {
 	name: string;
 	templateRepo: RepoDirection;
 	options?: templateOptions;
+	description: string;
 	author: string;
 }

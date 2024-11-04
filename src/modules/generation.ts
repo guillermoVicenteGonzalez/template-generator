@@ -141,11 +141,9 @@ async function deleteDir(path: string): Promise<boolean> {
 
 //eliminates non used dependencies in package.json
 //this is inverse. We do not pass options but UNSELETED OPTIONS
-export function createNewPackageJson(
-	options: templateOptions,
-	path: string = "test",
-	author: string = "john doe"
-) {
+export function createNewPackageJson(project: Project) {
+	const { options, name, author, description } = project;
+
 	if (options == null) return false;
 
 	let modulesToDelete = Object.keys(options).filter(
@@ -153,8 +151,13 @@ export function createNewPackageJson(
 	);
 
 	try {
-		let rawFile = fs.readFileSync(`${path}/package.json`);
+		let rawFile = fs.readFileSync(`${name}/package.json`);
 		let pkg = JSON.parse(rawFile.toString());
+
+		//now we update the author, name and description
+		pkg.author = author;
+		pkg.name = name;
+		pkg.description = description;
 
 		//regex creation
 		let depRegex = new RegExp(
@@ -187,12 +190,8 @@ export function createNewPackageJson(
 			pkg.scripts = nScripts;
 		}
 
-		//now we update the author and name
-		pkg.author = author;
-		pkg.name = path;
-
 		//now we overwrite package.json
-		fs.writeFileSync(`${path}/package.json`, JSON.stringify(pkg, null, "\t"));
+		fs.writeFileSync(`${name}/package.json`, JSON.stringify(pkg, null, "\t"));
 	} catch (err) {
 		console.log(err);
 	}

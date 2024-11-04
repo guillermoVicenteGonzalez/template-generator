@@ -37,6 +37,14 @@ export async function getProjectModules(options: templateOption[]) {
 	return modules;
 }
 
+export async function getProjectAuthor() {
+	return await input({ message: "Author: " });
+}
+
+export async function getProjectDescription() {
+	return await input({ message: "Write a small Project description" });
+}
+
 export async function confirmSelection(selections: Project) {
 	let selectedModules: templateOption[] = [];
 	for (const key in selections.options) {

@@ -7,6 +7,8 @@ import {
 import {
 	confirmDeletePreviousContent,
 	confirmSelection,
+	getProjectAuthor,
+	getProjectDescription,
 	getProjectModules,
 	getProjectName,
 	getTemplateSelection,
@@ -19,6 +21,7 @@ async function main() {
 		name: "test",
 		templateRepo: "none",
 		author: "john doe",
+		description: "",
 	};
 
 	//inquires
@@ -26,11 +29,15 @@ async function main() {
 	const template = templateManager.templates[templateKey];
 	const projectName = await getProjectName();
 	const modules = await getProjectModules(template.options);
+	const name = await getProjectAuthor();
+	const description = await getProjectDescription();
 
 	//project object generation
 	projectModel.options = generateProjectOptions(modules, template.options);
 	projectModel.name = projectName;
 	projectModel.templateRepo = template.repo;
+	projectModel.author = name;
+	projectModel.description = description;
 
 	//confirmation
 	const confirmation = await confirmSelection(projectModel);
@@ -49,11 +56,7 @@ async function main() {
 
 	//dependency deletion
 	// eliminateDependencies(projectModel.options, projectModel.name);
-	createNewPackageJson(
-		projectModel.options,
-		projectModel.name,
-		projectModel.author
-	);
+	createNewPackageJson(projectModel);
 	return;
 }
 
