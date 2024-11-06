@@ -3,7 +3,7 @@ import { templateCollection } from "../types/types";
 const templates: templateCollection = {
 	vue: {
 		name: "Vue + vite",
-		repo: "https://github.com/guillermoVicenteGonzalez/7-1-template.git",
+		repo: "guillermoVicenteGonzalez/vue-template",
 		color: "#41B883",
 		options: [
 			"eslint",
@@ -11,19 +11,15 @@ const templates: templateCollection = {
 			"vsconfig",
 			"license",
 			"gitignore",
-			"typescript",
 			"docker",
 		],
-		variants: [
-			{ name: "typescript", branch: "typescript" },
-			{ name: "Vue2", branch: "vue2" },
-		],
+		variants: [{ name: "typescript", branch: "typescript" }],
 		description:
 			"A vue + vite project template including typescript, scss and other features",
 	},
 	"React+Vite": {
 		name: "React + Vite SWC",
-		repo: "guillermoVicenteGonzalez/react-template#main",
+		repo: "guillermoVicenteGonzalez/react-template",
 		color: "#61dbfb",
 		options: [
 			"eslint",
@@ -35,12 +31,19 @@ const templates: templateCollection = {
 			"docker",
 			"storybook",
 		],
+		variants: [
+			{
+				name: "tsx",
+				branch: "tsx",
+				description: "The project is prepared to use typescript and tsx",
+			},
+		],
 		description:
 			"A react + vite + swc project template including typescript scss and others",
 	},
 	scss: {
 		name: "7-1 + SCSS",
-		repo: "https://github.com/guillermoVicenteGonzalez/7-1-template.git#main",
+		repo: "guillermoVicenteGonzalez/7-1-template.git",
 		color: "#cd6799",
 		options: ["vsconfig", "license", "prettier"],
 		description:
@@ -48,7 +51,7 @@ const templates: templateCollection = {
 	},
 	express: {
 		name: "Express js",
-		repo: "guillermoVicenteGonzalez/7-1-template#main",
+		repo: "guillermoVicenteGonzalez/express-template",
 		color: "#f0db4f",
 		options: [
 			"eslint",
@@ -58,6 +61,13 @@ const templates: templateCollection = {
 			"gitignore",
 			"typescript",
 			"docker",
+		],
+		variants: [
+			{
+				name: "typescript",
+				branch: "typescript",
+				description: "The project is prepared to be used alongside typescript",
+			},
 		],
 		description:
 			"A simple project template for express js using typescript, eslint and prettier",

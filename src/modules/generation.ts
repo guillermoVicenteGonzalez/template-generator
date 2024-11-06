@@ -182,8 +182,6 @@ export function createNewPackageJson(project: Project) {
 			for (const script in pkg.scripts) {
 				if (depRegex.test(pkg.scripts[script]) == false) {
 					nScripts[script] = pkg.scripts[script];
-				} else {
-					console.log(script);
 				}
 			}
 
