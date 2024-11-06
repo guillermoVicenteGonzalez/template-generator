@@ -13,6 +13,7 @@ export interface ProjectTemplate {
 	repo: string;
 	color?: templateColor;
 	options?: templateOption[];
+	variants?: { name: string; branch: string; description?: string }[];
 	description: string;
 }
 
@@ -27,7 +28,6 @@ export interface templateChoice extends Choice<string> {
 	value: string;
 	description: string;
 	options?: templateOptions;
-	variants?: { name: string; branch: string };
 }
 
 //The options that can be enabled to the RESULTING template.

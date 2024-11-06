@@ -14,6 +14,10 @@ const templates: templateCollection = {
 			"typescript",
 			"docker",
 		],
+		variants: [
+			{ name: "typescript", branch: "typescript" },
+			{ name: "Vue2", branch: "vue2" },
+		],
 		description:
 			"A vue + vite project template including typescript, scss and other features",
 	},

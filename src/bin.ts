@@ -12,6 +12,7 @@ import {
 	getProjectModules,
 	getProjectName,
 	getTemplateSelection,
+	selectVariant,
 } from "./modules/prompts";
 import { templateManager } from "./templates/templateManager";
 import { type Project } from "./types/types";
@@ -31,16 +32,22 @@ async function main() {
 	const modules = await getProjectModules(template.options);
 	const name = await getProjectAuthor();
 	const description = await getProjectDescription();
+	const variant = await selectVariant(template);
 
 	//project object generation
 	projectModel.options = generateProjectOptions(modules, template.options);
 	projectModel.name = projectName;
-	projectModel.templateRepo = template.repo;
+	projectModel.templateRepo = variant
+		? `${template.repo}#${variant.branch}`
+		: template.repo;
 	projectModel.author = name;
 	projectModel.description = description;
 
 	//confirmation
-	const confirmation = await confirmSelection(projectModel);
+	const confirmation = await confirmSelection(
+		projectModel,
+		variant ? variant.name : undefined
+	);
 	if (!confirmation) return;
 
 	const deletePrevious = await confirmDeletePreviousContent(projectModel.name);
