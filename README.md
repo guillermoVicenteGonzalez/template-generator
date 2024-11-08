@@ -2,6 +2,8 @@
 
 A simple project generator that uses public github templates as a boilterplate for javascript projects.
 
+DISCLAIMER: This is a personal project and although everyone is welcome to use it, it still has a long way to go and so do the projects it generates
+
 ## Execution
 
 `npx @gvicenteg/project-generator`
@@ -10,7 +12,7 @@ A simple project generator that uses public github templates as a boilterplate f
 
 This project uses `inquirer/prompts` to present to the user in a visually appealing way a series of questions meant to generate a new node project based on one of a series of templates stored in github.
 
-This templates will be then cloned using degit (to eliminate any git metadata in the process) and adapt the project to the preferences specified by the user
+This templates will be then cloned using degit (to eliminate any git metadata in the process) and adapt the project to the preferences specified by the user.
 
 ## Project structure
 
@@ -55,5 +57,4 @@ The package json dependency deletion should be handled as the file deletion is, 
 - [x] Export to npm
 - [ ] Error handling
 - [ ] Investigate about licenses
-
-## Run
+- [ ] Husky
