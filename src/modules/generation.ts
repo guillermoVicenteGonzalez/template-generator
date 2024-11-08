@@ -101,7 +101,6 @@ function getFilesToDelete(options: templateOptions) {
 
 	if (!options || !options.husky) files.push(".husky", ".commitlintrc.json");
 
-	console.log(files);
 	return files;
 }
 
@@ -148,14 +147,11 @@ async function deleteDir(path: string): Promise<boolean> {
 export function createNewPackageJson(project: Project) {
 	const { options, name, author, description } = project;
 	console.log("Creating new package json");
-	console.log(options);
 	if (options == null) return false;
 
 	let modulesToDelete = Object.keys(options).filter(
 		key => options[key] == false
 	);
-
-	console.log(modulesToDelete);
 
 	try {
 		let rawFile = fs.readFileSync(`${name}/package.json`);
