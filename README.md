@@ -30,6 +30,10 @@ The types used in this project are a mess and could use some serious revising. N
 
 Also, Error handling is almost non-existent and could pose another threat to take into account
 
+### Package.json
+
+The package json dependency deletion should be handled as the file deletion is, eg, each dependency has associated scripts to be deleted. Just by using regex the modules will likely be deleted correctly but not the scripts
+
 ## Todo
 
 - [ ] Colors

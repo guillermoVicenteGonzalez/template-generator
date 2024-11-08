@@ -62,7 +62,7 @@ Template: ${selections.name} ${variant ? `variant: ${variant}` : ""}
 Project name ${selections.name}
 Author: ${selections.author}
 ${
-	selections.options != null
+	selections.options != null && selectedModules && selectedModules.length > 0
 		? `additional configurations: ${selectedModules}`
 		: ""
 }\n`;

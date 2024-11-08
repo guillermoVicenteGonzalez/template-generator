@@ -31,18 +31,17 @@ export function generateProjectOptions(
 	modulesList: templateOption[],
 	originalModules: templateOption[]
 ): templateOptions {
-	if (
-		!modulesList ||
-		!originalModules ||
-		modulesList.length <= 0 ||
-		originalModules.length <= 0
-	)
-		return null;
 	const projectOptions: templateOptions = {};
+
+	if (!originalModules || originalModules.length <= 0) return null;
 
 	originalModules.forEach(item => {
 		projectOptions[item] = false;
 	});
+
+	if (!modulesList || modulesList.length <= 0) {
+		return projectOptions;
+	}
 
 	modulesList.forEach(item => {
 		projectOptions[item] = true;
@@ -98,6 +97,11 @@ function getFilesToDelete(options: templateOptions) {
 
 	if (!options || !options.blueprints) files.push(".blueprints");
 
+	if (!options || !options.storybook) files.push(".storybook");
+
+	if (!options || !options.husky) files.push(".husky", ".commitlintrc.json");
+
+	console.log(files);
 	return files;
 }
 
@@ -143,12 +147,15 @@ async function deleteDir(path: string): Promise<boolean> {
 //this is inverse. We do not pass options but UNSELETED OPTIONS
 export function createNewPackageJson(project: Project) {
 	const { options, name, author, description } = project;
-
+	console.log("Creating new package json");
+	console.log(options);
 	if (options == null) return false;
 
 	let modulesToDelete = Object.keys(options).filter(
 		key => options[key] == false
 	);
+
+	console.log(modulesToDelete);
 
 	try {
 		let rawFile = fs.readFileSync(`${name}/package.json`);

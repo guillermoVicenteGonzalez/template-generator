@@ -40,7 +40,7 @@ export interface templateOptions {
 	docker?: boolean;
 	blueprints?: boolean;
 	storybook?: boolean;
-	typescript?: boolean; //branch where ts is used ?
+	husky?: boolean;
 }
 
 export type templateOption = keyof templateOptions;

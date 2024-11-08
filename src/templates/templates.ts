@@ -12,8 +12,15 @@ const templates: templateCollection = {
 			"license",
 			"gitignore",
 			"docker",
+			"husky",
 		],
-		variants: [{ name: "typescript", branch: "typescript" }],
+		variants: [
+			{
+				name: "typescript",
+				branch: "typescript",
+				description: "A template featuring typescript support",
+			},
+		],
 		description:
 			"A vue + vite project template including typescript, scss and other features",
 	},
@@ -27,9 +34,9 @@ const templates: templateCollection = {
 			"vsconfig",
 			"license",
 			"gitignore",
-			"typescript",
 			"docker",
 			"storybook",
+			"husky",
 		],
 		variants: [
 			{
@@ -45,7 +52,14 @@ const templates: templateCollection = {
 		name: "7-1 + SCSS",
 		repo: "guillermoVicenteGonzalez/7-1-template.git",
 		color: "#cd6799",
-		options: ["vsconfig", "license", "prettier"],
+		options: ["vsconfig", "license", "prettier", "husky"],
+		variants: [
+			{
+				name: "javascript",
+				branch: "js",
+				description: "minimal native js setup",
+			},
+		],
 		description:
 			"A simple project tempalte based on the 7-1 architecture and SCSS features",
 	},
@@ -59,8 +73,8 @@ const templates: templateCollection = {
 			"vsconfig",
 			"license",
 			"gitignore",
-			"typescript",
 			"docker",
+			"husky",
 		],
 		variants: [
 			{
