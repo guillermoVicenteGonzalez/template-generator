@@ -1,6 +1,6 @@
 {
 	"name": "@gvicenteg/project-generator",
-	"version": "1.1.2",
+	"version": "1.1.3",
 	"description": "A simple template builder used to create projects from personal templates on the run",
 	"main": "./dist/bin.js",
 	"bin": {

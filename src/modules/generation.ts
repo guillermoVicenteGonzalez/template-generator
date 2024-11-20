@@ -13,7 +13,7 @@ export async function createProject(project: Project) {
 	//genero los ficheros y creo el directorio
 	await createProjectDir(project.name);
 	customizeProjectOptions(project.name, project.options);
-	let res = await cloneTemplate(project.templateRepo, project.name);
+	const res = await cloneTemplate(project.templateRepo, project.name);
 	if (!res) {
 		console.log("An error ocurred while trying to build the project template");
 	}
@@ -61,7 +61,7 @@ export async function cloneTemplate(
 		force: true,
 	});
 
-	let res = await downloader
+	const res = await downloader
 		.clone(projectPath)
 		.catch(err => {
 			console.log("an error ocurred trying to clone the template repository");
@@ -149,13 +149,15 @@ export function createNewPackageJson(project: Project) {
 	console.log("Creating new package json");
 	if (options == null) return false;
 
-	let modulesToDelete = Object.keys(options).filter(
+	const modulesToDelete = Object.keys(options).filter(
 		key => options[key] == false
 	);
 
+	if (!modulesToDelete || modulesToDelete.length == 0) return false;
+
 	try {
-		let rawFile = fs.readFileSync(`${name}/package.json`);
-		let pkg = JSON.parse(rawFile.toString());
+		const rawFile = fs.readFileSync(`${name}/package.json`);
+		const pkg = JSON.parse(rawFile.toString());
 
 		//now we update the author, name and description
 		pkg.author = author;
@@ -163,7 +165,7 @@ export function createNewPackageJson(project: Project) {
 		pkg.description = description;
 
 		//regex creation
-		let depRegex = new RegExp(
+		const depRegex = new RegExp(
 			`(${modulesToDelete.toString()})`.replace(/,/gi, "|")
 		);
 
@@ -181,7 +183,7 @@ export function createNewPackageJson(project: Project) {
 		//then scripts
 		// if (pkg.scripts) pkg.scripts = eliminateDependencies(pkg.scripts, depRegex);
 		if (pkg.scripts) {
-			let nScripts = {};
+			const nScripts = {};
 			for (const script in pkg.scripts) {
 				if (depRegex.test(pkg.scripts[script]) == false) {
 					nScripts[script] = pkg.scripts[script];
@@ -198,8 +200,10 @@ export function createNewPackageJson(project: Project) {
 	}
 }
 
+//we pass the dependencies the package alredy has, and retur those who dont match the regex =>
 function eliminateDependencies(dependencies: {}, regex: RegExp) {
-	let newDeps = {};
+	//we add
+	const newDeps = {};
 	for (const dep in dependencies) {
 		if (regex.test(dep) == false) {
 			newDeps[dep] = dependencies[dep];
